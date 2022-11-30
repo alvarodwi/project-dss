@@ -8,4 +8,18 @@ export class JenisLantai {
   ubinTeraso: number;
   tanah: number;
   bambu: number;
+
+  public totalFloor(): number {
+    return (
+      this.kayuKualitasTinggi +
+      this.keramik +
+      this.marmerGranit +
+      this.parketVinyl +
+      this.kayuKualitasRendah +
+      this.semenBata +
+      this.ubinTeraso +
+      this.tanah +
+      this.bambu
+    );
+  }
 }

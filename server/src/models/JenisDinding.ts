@@ -4,4 +4,10 @@ export class JenisDinding {
   kayu: number;
   plesteran: number;
   bambu: number;
+
+  public totalWall(): number {
+    return (
+      this.tembok + this.batangKayu + this.kayu + this.plesteran + this.bambu
+    );
+  }
 }
