@@ -1,4 +1,6 @@
 import { Candidate } from "src/models/Candidate";
+import { JenisDinding } from "../models/JenisDinding";
+import { JenisLantai } from "../models/JenisLantai";
 import { Area } from "../models/Area";
 
 /**
@@ -6,8 +8,11 @@ import { Area } from "../models/Area";
  * @param area objek yang akan diconvert
  */
 export function areaToCandidate(area: Area): Candidate {
-  let totalWall: number = area.dinding.totalWall();
-  let totalFloor: number = area.lantai.totalFloor();
+  let dindingInstance = new JenisDinding(area.dinding);
+  let lantaiInstance = new JenisLantai(area.lantai);
+
+  let totalWall: number = dindingInstance.totalWall();
+  let totalFloor: number = lantaiInstance.totalFloor();
 
   let k1: number = area.dinding.tembok;
   let k2: number = area.dinding.batangKayu + area.dinding.kayu;

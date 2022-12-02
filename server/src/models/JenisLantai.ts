@@ -9,7 +9,19 @@ export class JenisLantai {
   tanah: number;
   bambu: number;
 
-  public totalFloor(): number {
+  constructor(json: any) {
+    this.kayuKualitasTinggi = json.kayuKualitasTinggi;
+    this.keramik = json.keramik;
+    this.marmerGranit = json.marmerGranit;
+    this.parketVinyl = json.parketVinyl;
+    this.kayuKualitasRendah = json.kayuKualitasRendah;
+    this.semenBata = json.semenBata;
+    this.ubinTeraso = json.ubinTeraso;
+    this.tanah = json.tanah;
+    this.bambu = json.bambu;
+  }
+
+  totalFloor(): number {
     return (
       this.kayuKualitasTinggi +
       this.keramik +

@@ -1,6 +1,9 @@
 import express, { Express } from "express";
 import bodyParser from "body-parser";
 
+//router
+import topsisRouter from "./routes/Route";
+
 const app: Express = express();
 const PORT: number = 5000;
 
@@ -12,3 +15,5 @@ app.listen(PORT, () => {
 app.get("/", (req: express.Request, res: express.Response) => {
   res.send("Rest API with ts created!");
 });
+
+app.use("/", topsisRouter);
