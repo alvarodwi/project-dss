@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import topsisRouter from "./routes/Route";
 
 const app: Express = express();
-const PORT: number = 5000;
+const PORT: number = 3001;
 
 app.use(bodyParser.json());
 app.listen(PORT, () => {
