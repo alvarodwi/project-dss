@@ -25,6 +25,7 @@
   </div>
 
   <button
+    @click="onSubmit"
     class="block w-3/4 py-2 mx-auto mt-4 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600"
   >
     Submit
@@ -78,5 +79,23 @@ function hideModal() {
 
 function onModalSubmit(modalData: Area) {
   areas.value.push(modalData);
+}
+
+function onSubmit() {
+  const request = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: {
+      areas: areas.value,
+    },
+  };
+
+  console.log("test", request);
+
+  fetch("http://localhost:3001/topsis", request)
+    .then((response) => response.json())
+    .then((data) => console.log("hasil fetch", data));
 }
 </script>

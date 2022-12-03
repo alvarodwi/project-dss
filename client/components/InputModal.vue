@@ -41,7 +41,7 @@
                 id="name"
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
-                v-model="area.dinding.bambu"
+                v-model.number="area.dinding.bambu"
                 :disabled="props.type !== 'form'"
               />
             </div>
@@ -54,7 +54,7 @@
                 id="name"
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
-                v-model="area.dinding.batangKayu"
+                v-model.number="area.dinding.batangKayu"
                 :disabled="props.type !== 'form'"
               />
             </div>
@@ -67,7 +67,7 @@
                 id="name"
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
-                v-model="area.dinding.kayu"
+                v-model.number="area.dinding.kayu"
                 :disabled="props.type !== 'form'"
               />
             </div>
@@ -80,7 +80,7 @@
                 id="name"
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
-                v-model="area.dinding.plesteran"
+                v-model.number="area.dinding.plesteran"
                 :disabled="props.type !== 'form'"
               />
             </div>
@@ -94,7 +94,7 @@
                 id="name"
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
-                v-model="area.dinding.tembok"
+                v-model.number="area.dinding.tembok"
                 :disabled="props.type !== 'form'"
               />
             </div>
@@ -114,7 +114,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.bambu"
+                  v-model.number="area.lantai.bambu"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -127,7 +127,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.kayuKualitasRendah"
+                  v-model.number="area.lantai.kayuKualitasRendah"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -140,7 +140,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.kayuKualitasTinggi"
+                  v-model.number="area.lantai.kayuKualitasTinggi"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -153,7 +153,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.keramik"
+                  v-model.number="area.lantai.keramik"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -166,7 +166,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.marmerGranit"
+                  v-model.number="area.lantai.marmerGranit"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -179,7 +179,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.parketVinyl"
+                  v-model.number="area.lantai.parketVinyl"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -192,7 +192,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.semenBata"
+                  v-model.number="area.lantai.semenBata"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -205,7 +205,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.tanah"
+                  v-model.number="area.lantai.tanah"
                   :disabled="props.type !== 'form'"
                 />
               </div>
@@ -218,7 +218,7 @@
                   id="name"
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
-                  v-model="area.lantai.ubinTeraso"
+                  v-model.number="area.lantai.ubinTeraso"
                   :disabled="props.type !== 'form'"
                 />
               </div>

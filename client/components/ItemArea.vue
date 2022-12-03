@@ -3,7 +3,7 @@
     class="flex flex-row w-full p-4 bg-white rounded-lg shadow-lg cursor-pointer"
     @click="emit('click')"
   >
-    <h1 class="my-auto text-xs font-semibold text-gray-700 md:text-base grow">
+    <h1 class="my-auto text-xs font-semibold text-gray-700 lg:text-base grow">
       {{ area.name }}
     </h1>
     <div class="flex justify-end">
