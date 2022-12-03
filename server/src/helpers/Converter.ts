@@ -16,7 +16,7 @@ export function areaToCandidate(area: Area): Candidate {
 
   let k1: number = area.dinding.tembok;
   let k2: number = area.dinding.batangKayu + area.dinding.kayu;
-  let k3: number = area.dinding.plesteran + area.dinding.bambu;
+  let k3: number = area.dinding.plesteran + area.dinding.anyaman + area.dinding.bambu;
   let k4: number =
     area.lantai.kayuKualitasTinggi +
     area.lantai.keramik +
@@ -29,11 +29,14 @@ export function areaToCandidate(area: Area): Candidate {
   let k6: number = area.lantai.tanah + area.lantai.bambu;
 
   return {
-    k1: k1 / totalWall,
-    k2: k2 / totalWall,
-    k3: k3 / totalWall,
-    k4: k4 / totalFloor,
-    k5: k5 / totalFloor,
-    k6: k6 / totalFloor,
+    criteria :
+    [
+      k1 / totalWall,
+      k2 / totalWall,
+      k3 / totalWall,
+      k4 / totalFloor,
+      k5 / totalFloor,
+      k6 / totalFloor,
+    ]
   };
 }

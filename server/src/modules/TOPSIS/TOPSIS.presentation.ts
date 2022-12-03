@@ -4,6 +4,6 @@ import { TOPSISLogic } from "./TOPSIS.logic";
 
 export function TOPSIS(req: Request, res: Response) {
   const areas: Area[] = req.body.areas;
-  console.log(typeof req.body.areas[0]);
-  res.send(TOPSISLogic(areas));
+  const data = TOPSISLogic(areas)
+  res.send(data);
 }

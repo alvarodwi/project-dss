@@ -3,6 +3,7 @@ export class JenisDinding {
   batangKayu: number;
   kayu: number;
   plesteran: number;
+  anyaman: number;
   bambu: number;
 
   constructor(json: any) {
@@ -10,12 +11,13 @@ export class JenisDinding {
     this.batangKayu = json.batangKayu;
     this.kayu = json.kayu;
     this.plesteran = json.plesteran;
+    this.anyaman = json.anyaman;
     this.bambu = json.bambu;
   }
 
   totalWall(): number {
     return (
-      this.tembok + this.batangKayu + this.kayu + this.plesteran + this.bambu
+      this.tembok + this.batangKayu + this.kayu + this.plesteran + this.bambu + this.anyaman
     );
   }
 }
