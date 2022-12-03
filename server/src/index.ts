@@ -8,13 +8,7 @@ import topsisRouter from "./routes/Route";
 const app: Express = express();
 const PORT: number = 3001;
 
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 app.listen(PORT, () => {
