@@ -1,5 +1,6 @@
 import express, { Express } from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 //router
 import topsisRouter from "./routes/Route";
@@ -15,5 +16,7 @@ app.listen(PORT, () => {
 app.get("/", (req: express.Request, res: express.Response) => {
   res.send("Rest API with ts created!");
 });
+
+app.use(cors());
 
 app.use("/", topsisRouter);
