@@ -34,6 +34,19 @@
             >
             <div>
               <label for="name" class="block my-1 text-xs text-gray-500"
+                >Anyaman Bambu</label
+              >
+              <input
+                type="text"
+                id="name"
+                class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
+                placeholder="0"
+                v-model.number="area.dinding.anyaman"
+                :disabled="props.type !== 'form'"
+              />
+            </div>
+            <div>
+              <label for="name" class="block my-1 text-xs text-gray-500"
                 >Bambu</label
               >
               <input
@@ -270,6 +283,7 @@ const defaultValue: Area = {
     kayu: 0,
     plesteran: 0,
     bambu: 0,
+    anyaman: 0,
   },
   lantai: <JenisLantai>{
     kayuKualitasTinggi: 0,

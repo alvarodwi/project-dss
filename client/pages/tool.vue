@@ -43,7 +43,6 @@
 </template>
 
 <script setup lang="ts">
-import { includeBooleanAttr } from "@vue/shared";
 import { Ref } from "vue";
 import IconAdd from "~icons/carbon/add";
 
@@ -57,7 +56,8 @@ const modalProps: Ref<ModalProps> = ref(<ModalProps>{
   type: "form",
   visible: false,
 });
-const areas: Ref<Area[]> = ref([]);
+
+const areas = useAreas();
 
 function showNewModal() {
   modalProps.value = {
@@ -82,22 +82,7 @@ function onModalSubmit(modalData: Area) {
   areas.value.push(modalData);
 }
 
-function onSubmit() {
-  const request = {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: {
-      areas: areas.value,
-    },
-  };
-
-  console.log("test", request);
-
-  $fetch("http://localhost:3001/topsis", request).then((data) =>
-    console.log("hasil fetch", data)
-  );
+async function onSubmit() {
+  await navigateTo("/result");
 }
 </script>

@@ -9,6 +9,7 @@ interface JenisDinding {
   batangKayu: number;
   kayu: number;
   plesteran: number;
+  anyaman: number;
   bambu: number;
 }
 
