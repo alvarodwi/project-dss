@@ -238,6 +238,16 @@
             </div>
           </div>
         </div>
+        <!-- error message -->
+        <div
+          class="mt-4 text-sm text-red-500"
+          v-if="errors && errors.length > 0"
+        >
+          <p>Error :</p>
+          <ul class="ml-6 list-disc">
+            <li v-for="e in errors">{{ e }}</li>
+          </ul>
+        </div>
       </div>
       <!-- button -->
       <div
@@ -299,15 +309,42 @@ const defaultValue: Area = {
 };
 
 const area: Ref<Area> = ref(props.area ?? defaultValue);
+const errors: Ref<String[]> = ref([]);
+
+function validateArea(value: Area) {
+  if (!value.name || value.name === "") {
+    errors.value.push("Nama desa/kecamatan tidak boleh kosong");
+  }
+
+  if (checkIfAllZero(value.dinding)) {
+    errors.value.push("Data dinding tidak boleh 0 semua");
+  }
+
+  if (checkIfAllZero(value.lantai)) {
+    errors.value.push("Data lantai tidak boleh 0 semua");
+  }
+}
+
+function checkIfAllZero(obj: Object) {
+  for (let [_, num] of Object.entries(obj)) {
+    if (num != 0) {
+      return false;
+    }
+  }
+  return true;
+}
 
 function cancel() {
   emit("close");
 }
 
 function submit() {
-  console.log(area.value);
-  emit("submit", area.value);
-  emit("close");
+  errors.value = [];
+  validateArea(area.value);
+  if (errors.value.length === 0) {
+    emit("submit", area.value);
+    emit("close");
+  }
 }
 </script>
 

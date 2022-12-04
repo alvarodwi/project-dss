@@ -37,30 +37,46 @@
 </template>
 
 <script setup lang="ts">
+import { Ref } from "vue";
+
 const areas = useAreas();
 let result: number[] = [];
 
-let data: {
-  area: Area;
-  value: number;
-}[] = [];
+let data: Ref<
+  {
+    area: Area;
+    value: number;
+  }[]
+> = ref([]);
 
 function bindData(param: number[]) {
   result = param;
+  let temp: {
+    area: Area;
+    value: number;
+  }[] = [];
 
   for (let i = 0; i < result.length; i++) {
-    data.push({
+    temp.push({
       area: areas.value[i],
       value: result[i],
     });
   }
 
-  data.sort((a, b) => b.value - a.value);
+  temp.sort((a, b) => b.value - a.value);
 
-  console.log(data);
+  data.value = temp;
+}
+
+async function navigateToTool() {
+  await navigateTo("/tool");
 }
 
 onMounted(() => {
+  if (!areas.value || areas.value.length === 0) {
+    navigateToTool();
+  }
+
   const request = {
     method: "post",
     headers: {

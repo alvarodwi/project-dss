@@ -24,6 +24,16 @@
     />
   </div>
 
+  <div
+    class="w-3/4 mx-auto mt-4 text-sm text-red-500"
+    v-if="errors && errors.length > 0"
+  >
+    <p>Error :</p>
+    <ul class="ml-6 list-disc">
+      <li v-for="e in errors">{{ e }}</li>
+    </ul>
+  </div>
+
   <button
     @click="onSubmit"
     class="block w-3/4 py-2 mx-auto mt-4 font-bold text-white bg-green-500 rounded-lg hover:bg-green-600"
@@ -58,6 +68,7 @@ const modalProps: Ref<ModalProps> = ref(<ModalProps>{
 });
 
 const areas = useAreas();
+const errors: Ref<String[]> = ref([]);
 
 function showNewModal() {
   modalProps.value = {
@@ -74,6 +85,14 @@ function showDetailModal(data: Area) {
   };
 }
 
+function validate() {
+  if (areas.value.length < 2) {
+    errors.value.push(
+      "Minimal terdapat 2 desa/kecamatan sebelum data bisa dihitung"
+    );
+  }
+}
+
 function hideModal() {
   modalProps.value.visible = false;
 }
@@ -83,6 +102,10 @@ function onModalSubmit(modalData: Area) {
 }
 
 async function onSubmit() {
-  await navigateTo("/result");
+  errors.value = [];
+  validate();
+  if (errors.value.length === 0) {
+    await navigateTo("/result");
+  }
 }
 </script>

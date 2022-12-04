@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full px-4 py-3 text-center shadow-sm">
+  <nav class="w-full px-4 py-3 font-medium text-center shadow-sm">
     <NuxtLink class="mx-3 cursor-pointer hover:text-gray-700" to="/"
       >Beranda</NuxtLink
     >
