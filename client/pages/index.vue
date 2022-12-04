@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-xl font-bold text-center">🚧 Penjelasan Projek 🚧</h1>
 
-  <div class="w-1/2 mx-auto">
+  <div class="w-1/2 mx-auto mt-4">
     <p class="my-2">
       Pada saat ini banyak sekali narasi mengenai pembangunan yang tidak merata
       dan tidak sesuai, oleh karena itu kami sebagai mahasiswa yang meneliti
@@ -16,7 +16,7 @@
       warganya. Dari website
       <a
         href="https://opendata.sumedangkab.go.id/index.php/dashboard/dataseet"
-        class="cursor-pointer text-purple-600 hover:text-purple-400"
+        class="text-purple-600 cursor-pointer hover:text-purple-400"
         >Opendata Kab. Sumedang</a
       >, kami berhasil mendapatkan data jenis dinding dan jenis lantai di
       desa-desa yang ada di kecamatan Jatinangor dan Tanjungsari.
@@ -25,7 +25,7 @@
     <p class="my-2">
       Dari data tersebut, kami mengembangkan sebuah model untuk membantu
       pengambilan keputusan dalam topik
-      <span class="font-semibold italic"
+      <span class="italic font-semibold"
         >"Daerah mana yang lebih cocok menerima bantuan pembangunan"</span
       >
       berdasarkan data bahan bangunan yang dipakai.
@@ -36,9 +36,9 @@
       tingkatan, yaitu
     </p>
 
-    <table class="w-full mt-4 border-spacing-2 text-sm table-fixed">
+    <table class="w-full mt-4 text-sm table-fixed border-spacing-2">
       <thead>
-        <tr class="border-b text-left">
+        <tr class="text-left border-b">
           <th>Tingkatan</th>
           <th>Bahan Dinding</th>
           <th>Bahan Lantai</th>

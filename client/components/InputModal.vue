@@ -8,9 +8,13 @@
       id="modal_container"
       class="fixed z-30 w-2/3 pt-6 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2"
     >
+      <div class="absolute right-0 mx-8" v-if="props.type === 'detail'">
+        <IconEdit v-if="!edit" @click="toggleEdit(true)" />
+        <IconEditOff v-if="edit" @click="toggleEdit(false)" />
+      </div>
       <div class="px-6 mb-6">
         <p class="font-bold">
-          {{ props.type === "form" ? "Input" : "Detail" }} Data Daerah
+          {{ type === "form" ? "Input" : "Detail" }} Data Daerah
         </p>
         <div class="mt-2">
           <label for="name" class="block mb-2 text-sm font-medium text-gray-800"
@@ -22,7 +26,7 @@
             class="w-1/2 p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
             placeholder="Desa Cikeruh"
             v-model="area.name"
-            :disabled="props.type !== 'form'"
+            :disabled="type !== 'form'"
           />
         </div>
 
@@ -42,7 +46,7 @@
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
                 v-model.number="area.dinding.anyaman"
-                :disabled="props.type !== 'form'"
+                :disabled="type !== 'form'"
               />
             </div>
             <div>
@@ -55,7 +59,7 @@
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
                 v-model.number="area.dinding.bambu"
-                :disabled="props.type !== 'form'"
+                :disabled="type !== 'form'"
               />
             </div>
             <div>
@@ -68,7 +72,7 @@
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
                 v-model.number="area.dinding.batangKayu"
-                :disabled="props.type !== 'form'"
+                :disabled="type !== 'form'"
               />
             </div>
             <div>
@@ -81,7 +85,7 @@
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
                 v-model.number="area.dinding.kayu"
-                :disabled="props.type !== 'form'"
+                :disabled="type !== 'form'"
               />
             </div>
             <div>
@@ -94,7 +98,7 @@
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
                 v-model.number="area.dinding.plesteran"
-                :disabled="props.type !== 'form'"
+                :disabled="type !== 'form'"
               />
             </div>
 
@@ -108,7 +112,7 @@
                 class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                 placeholder="0"
                 v-model.number="area.dinding.tembok"
-                :disabled="props.type !== 'form'"
+                :disabled="type !== 'form'"
               />
             </div>
           </div>
@@ -128,7 +132,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.bambu"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -141,7 +145,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.kayuKualitasRendah"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -154,7 +158,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.kayuKualitasTinggi"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -167,7 +171,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.keramik"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -180,7 +184,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.marmerGranit"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -193,7 +197,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.parketVinyl"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -206,7 +210,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.semenBata"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -219,7 +223,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.tanah"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
               <div>
@@ -232,7 +236,7 @@
                   class="w-full p-2 text-sm text-gray-900 border rounded-lg bg-gray-50 focus:border-transparent"
                   placeholder="0"
                   v-model.number="area.lantai.ubinTeraso"
-                  :disabled="props.type !== 'form'"
+                  :disabled="type !== 'form'"
                 />
               </div>
             </div>
@@ -252,12 +256,13 @@
       <!-- button -->
       <div
         class="flex justify-end px-4 py-3 border-t shadow-sm"
-        v-if="props.type === 'form'"
+        v-if="type === 'form'"
       >
         <button
           class="px-3 py-1 mr-2 text-sm font-medium text-gray-900 border border-red-400 rounded-lg hover:border-red-600"
           type="button"
           @click="cancel"
+          v-if="props.type !== 'detail'"
         >
           Batal
         </button>
@@ -266,7 +271,7 @@
           type="button"
           @click="submit"
         >
-          Submit
+          {{ props.type === "detail" ? "Update" : "Submit" }}
         </button>
       </div>
     </div>
@@ -275,8 +280,10 @@
 
 <script setup lang="ts">
 import { defineEmits, defineProps, Ref } from "vue";
+import IconEditOff from "~icons/carbon/edit-off";
+import IconEdit from "~icons/carbon/edit";
 
-const emit = defineEmits(["close", "submit"]);
+const emit = defineEmits(["close", "submit", "edit"]);
 
 const props = defineProps<{
   type: ModalType;
@@ -309,7 +316,19 @@ const defaultValue: Area = {
 };
 
 const area: Ref<Area> = ref(props.area ?? defaultValue);
+const type = ref(props.type ?? "form");
+const edit = ref(false);
 const errors: Ref<String[]> = ref([]);
+
+function toggleEdit(value: Boolean) {
+  if (value) {
+    type.value = "form";
+  } else {
+    type.value = "detail";
+  }
+
+  edit.value = !edit.value;
+}
 
 function validateArea(value: Area) {
   if (!value.name || value.name === "") {
@@ -342,7 +361,12 @@ function submit() {
   errors.value = [];
   validateArea(area.value);
   if (errors.value.length === 0) {
-    emit("submit", area.value);
+    if (edit.value) {
+      // emit("edit", area.value);
+      // somehow this will still edit the value
+    } else {
+      emit("submit", area.value);
+    }
     emit("close");
   }
 }

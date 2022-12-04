@@ -14,13 +14,13 @@
   </div>
 
   <div
-    class="grid w-3/4 grid-flow-col grid-cols-3 grid-rows-5 gap-2 p-4 mx-auto mt-4 bg-gray-100 rounded-lg md:grid-cols-4 h-96"
+    class="grid w-3/4 grid-flow-col grid-cols-3 grid-rows-5 gap-2 p-4 mx-auto mt-4 overflow-x-auto bg-gray-100 rounded-lg md:grid-cols-4 h-96"
   >
     <ItemArea
       v-for="(area, index) in areas"
       :area="area"
       @delete="areas.splice(index, 1)"
-      @click="() => showDetailModal(area)"
+      @click="() => showDetailModal(area, index)"
     />
   </div>
 
@@ -60,6 +60,7 @@ interface ModalProps {
   type: "form" | "detail";
   visible: boolean;
   area?: Area;
+  index?: number;
 }
 
 const modalProps: Ref<ModalProps> = ref(<ModalProps>{
@@ -77,11 +78,12 @@ function showNewModal() {
   };
 }
 
-function showDetailModal(data: Area) {
+function showDetailModal(data: Area, index: number) {
   modalProps.value = {
     type: "detail",
     visible: true,
     area: data,
+    index: index,
   };
 }
 

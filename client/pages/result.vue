@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-xl font-bold text-center">🎉 Hasil Perhitungan 🎉</h1>
+  <h1 class="text-xl font-bold text-center">🧮 Hasil Perhitungan 🧮</h1>
 
   <div class="w-3/4 pb-16 mx-auto mt-4 border-b" v-if="data.length > 0">
     <h3 class="inline text-lg font-semibold text-gray-600">Kandidat Terbaik</h3>
