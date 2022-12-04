@@ -23,12 +23,19 @@ export function TOPSISLogic(areas: Area[]) {
     faktorNormalisasi[i] = Math.sqrt(faktorNormalisasi[i]);
   }
 
+  console.log("faktor normalisasi");
+  console.log(faktorNormalisasi);
+
   let normalisasi: number[][] = zeros([candidates.length, weight.length]);
   for (let i = 0; i < candidates.length; i++) {
     for (let j = 0; j < weight.length; j++) {
-      normalisasi[i][j] = candidates[i].criteria[j] / faktorNormalisasi[j];
+      let value = candidates[i].criteria[j] / faktorNormalisasi[j];
+      normalisasi[i][j] = Number.isNaN(value) ? 0 : value;
     }
   }
+
+  console.log("normalisasi");
+  console.log(normalisasi);
 
   let bobotNormalisasi: number[][] = zeros([candidates.length, weight.length]);
   for (let i = 0; i < candidates.length; i++) {
@@ -36,6 +43,9 @@ export function TOPSISLogic(areas: Area[]) {
       bobotNormalisasi[i][j] = normalisasi[i][j] * weight[j];
     }
   }
+
+  console.log("normalisasi terbobot");
+  console.log(bobotNormalisasi);
 
   let PIS: number[] = zeros([weight.length]);
   let NIS: number[] = zeros([weight.length]);
@@ -52,6 +62,10 @@ export function TOPSISLogic(areas: Area[]) {
       }
     }
   }
+
+  console.log("PIS NIS");
+  console.log(NIS);
+  console.log(PIS);
 
   let jarakPIS: number[] = zeros([candidates.length, weight.length]);
   let jarakNIS: number[] = zeros([candidates.length, weight.length]);
@@ -74,6 +88,10 @@ export function TOPSISLogic(areas: Area[]) {
     nilaiPIS[i] = Math.sqrt(nilaiPIS[i]);
     nilaiNIS[i] = Math.sqrt(nilaiNIS[i]);
   }
+
+  console.log("jaral PIS NIS");
+  console.log(jarakNIS);
+  console.log(jarakPIS);
 
   let v: number[] = zeros([candidates.length]);
   for (let i = 0; i < candidates.length; i++) {
