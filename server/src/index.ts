@@ -16,7 +16,7 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req: express.Request, res: express.Response) => {
-  res.send("Rest API with ts created!");
+  res.send("Rest API TOPSIS model created!");
 });
 
 app.use("/", topsisRouter);

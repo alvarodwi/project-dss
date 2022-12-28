@@ -6,7 +6,8 @@ import weight from "./util/Weight";
 
 /**
  * Fungsi TOPSIS yang menjadi model dari DSS
- * @param areas
+ * @param areas Data input setiap kecamatan dan desa
+ * @returns nilai v dari setiap input yang dimasukkan
  */
 export function TOPSISLogic(areas: Area[]) {
   let candidates: Candidate[] = [];

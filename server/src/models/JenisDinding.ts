@@ -1,3 +1,6 @@
+/**
+ * Class yang berisi jumlah data dari setiap komponen pada jenis dinding
+ */
 export class JenisDinding {
   tembok: number;
   batangKayu: number;
@@ -17,7 +20,12 @@ export class JenisDinding {
 
   totalWall(): number {
     return (
-      this.tembok + this.batangKayu + this.kayu + this.plesteran + this.bambu + this.anyaman
+      this.tembok +
+      this.batangKayu +
+      this.kayu +
+      this.plesteran +
+      this.bambu +
+      this.anyaman
     );
   }
 }

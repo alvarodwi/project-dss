@@ -1,3 +1,6 @@
+/**
+ * Class yang berisi jumlah data dari setiap komponen pada jenis lantai
+ */
 export class JenisLantai {
   kayuKualitasTinggi: number;
   keramik: number;
