@@ -1,3 +1,4 @@
+<!-- layout komponen dialog input -->
 <template>
   <div role="dialog">
     <div
@@ -283,15 +284,28 @@ import { defineEmits, defineProps, Ref } from "vue";
 import IconEditOff from "~icons/carbon/edit-off";
 import IconEdit from "~icons/carbon/edit";
 
+/**
+ * callback untuk komponen ini
+ */
 const emit = defineEmits(["close", "submit", "edit"]);
 
+/**
+ * props untuk komponen ini
+ */
 const props = defineProps<{
   type: ModalType;
   area?: Area;
 }>();
 
+/**
+ *
+ */
 type ModalType = "detail" | "form";
 
+/**
+ * enum untuk jenis modal
+ * tipe 'form' untuk mengedit, 'detail' untuk view-only
+ */
 const defaultValue: Area = {
   name: "",
   dinding: <JenisDinding>{
@@ -315,11 +329,22 @@ const defaultValue: Area = {
   },
 };
 
+/**
+ * pendefinisian variable
+ * area   -> isian data wilayah di dalam form input/detail
+ * type   -> jenis form dari ModalType
+ * edit   -> toggle apakah form ini bisa diedit/tidak bisa diedit
+ * errors -> error yang akan muncul ketika pengisian form
+ */
 const area: Ref<Area> = ref(props.area ?? defaultValue);
 const type = ref(props.type ?? "form");
 const edit = ref(false);
 const errors: Ref<String[]> = ref([]);
 
+/**
+ * fungsi untuk mengganti jenis form
+ * @param value true false tergantung apakah edit mode diaktifkan atau tidak
+ */
 function toggleEdit(value: Boolean) {
   if (value) {
     type.value = "form";
@@ -330,6 +355,16 @@ function toggleEdit(value: Boolean) {
   edit.value = !edit.value;
 }
 
+/**
+ * fungsi untuk validasi area
+ * aturan yang dicek diantaranya :
+ * 1. apakah nama desa/kecamatan kosong
+ * 2. apakah data dinding semua bernilai 0
+ * 3. apakah data lantai semua bernilai 0
+ *
+ * jika aturan diatas ada yang terpenuhi, maka error akan diisi pesan tergantung kasusnya
+ * @param value area yang akan dicek
+ */
 function validateArea(value: Area) {
   if (!value.name || value.name === "") {
     errors.value.push("Nama desa/kecamatan tidak boleh kosong");
@@ -344,6 +379,11 @@ function validateArea(value: Area) {
   }
 }
 
+/**
+ * fungsi untuk mengecek apakah isi objek 0 semua
+ * dipakai selama validasi area
+ * @param obj objek yang akan dicek
+ */
 function checkIfAllZero(obj: Object) {
   for (let [_, num] of Object.entries(obj)) {
     if (num != 0) {
@@ -357,6 +397,10 @@ function cancel() {
   emit("close");
 }
 
+/**
+ * fungsi yang dipanggil ketika tombol submit pada dialog diklik
+ * form akan ditutup, dan data yang diinput dikirim melalui callback "submit"
+ */
 function submit() {
   errors.value = [];
   validateArea(area.value);
@@ -372,6 +416,7 @@ function submit() {
 }
 </script>
 
+<!-- style untuk transisi fade pada dialog -->
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {

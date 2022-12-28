@@ -1,3 +1,4 @@
+<!-- layout halaman tool (alat dss) -->
 <template>
   <h1 class="text-xl font-bold text-center">Alat DSS</h1>
 
@@ -56,6 +57,9 @@
 import { Ref } from "vue";
 import IconAdd from "~icons/carbon/add";
 
+/**
+ * props untuk komponen ini
+ */
 interface ModalProps {
   type: "form" | "detail";
   visible: boolean;
@@ -63,14 +67,22 @@ interface ModalProps {
   index?: number;
 }
 
+/**
+ * pendefinisian variable
+ * modalProps   -> props untuk komponen modal yang akan muncul ketika tombol add/item diklik
+ * areas        -> list area/wilayah yang telah diinput
+ * errors       -> error yang akan muncul di halaman ini
+ */
 const modalProps: Ref<ModalProps> = ref(<ModalProps>{
   type: "form",
   visible: false,
 });
-
 const areas = useAreas();
 const errors: Ref<String[]> = ref([]);
 
+/**
+ * fungsi untuk menampilkan modal dialog input untuk menambahkan data baru
+ */
 function showNewModal() {
   modalProps.value = {
     type: "form",
@@ -78,6 +90,11 @@ function showNewModal() {
   };
 }
 
+/**
+ * fungsi untuk menampilkan modal dialog detail untuk melihat / mengedit data yang telah ditambahkan
+ * @param data data area yang akan dilihat
+ * @param index posisi data tersebut di array
+ */
 function showDetailModal(data: Area, index: number) {
   modalProps.value = {
     type: "detail",
@@ -87,6 +104,9 @@ function showDetailModal(data: Area, index: number) {
   };
 }
 
+/**
+ * fungsi untuk validasi error
+ */
 function validate() {
   if (areas.value.length < 2) {
     errors.value.push(
@@ -95,14 +115,24 @@ function validate() {
   }
 }
 
+/**
+ * fungsi untuk menutup modal dialog
+ */
 function hideModal() {
   modalProps.value.visible = false;
 }
 
+/**
+ * fungsi yang dijalankan ketika tombol submit pada modal dialog diklik
+ * @param modalData data area dari modal dialog
+ */
 function onModalSubmit(modalData: Area) {
   areas.value.push(modalData);
 }
 
+/**
+ * fungsi yang dijalankan ketika tombol submit pada halaman ini diklik
+ */
 async function onSubmit() {
   errors.value = [];
   validate();

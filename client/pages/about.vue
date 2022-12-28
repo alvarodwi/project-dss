@@ -1,3 +1,4 @@
+<!-- layout halaman about -->
 <template>
   <h1 class="text-xl font-bold text-center">ℹ️ Tentang Projek ℹ️</h1>
 

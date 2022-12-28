@@ -1,3 +1,4 @@
+<!-- layout halaman result (hasil perhitungan) -->
 <template>
   <h1 class="text-xl font-bold text-center">🧮 Hasil Perhitungan 🧮</h1>
 
@@ -39,9 +40,14 @@
 <script setup lang="ts">
 import { Ref } from "vue";
 
+/**
+ * pendefinisian variable
+ * areas    -> data area yang telah diinput di halaman sebelumnya
+ * result   -> data dari API berisi hasil perhitungan TOPSIS
+ * data     -> data hasil gabungan areas dan result, untuk menampilkan secara berdampingan data area dan hasil perhitungan TOPSIS
+ */
 const areas = useAreas();
 let result: number[] = [];
-
 let data: Ref<
   {
     area: Area;
@@ -49,6 +55,10 @@ let data: Ref<
   }[]
 > = ref([]);
 
+/**
+ * fungsi untuk menggabungkan data areas dan result dari API
+ * @param param data result dari API
+ */
 function bindData(param: number[]) {
   result = param;
   let temp: {
@@ -68,10 +78,19 @@ function bindData(param: number[]) {
   data.value = temp;
 }
 
+/**
+ * fungsi untuk kembali ke halaman tool
+ */
 async function navigateToTool() {
   await navigateTo("/tool");
 }
 
+/**
+ * fungsi yang dijalankan ketika halaman dibuka
+ * dilakukan hal-hal berikut :
+ * 1. jika areas kosong, maka kembali ke halaman tool (untuk diinput kembali)
+ * 2. jika tidak kosong, maka API akan ditembak dan ditampilkan hasil perhitungan TOPSIS nya
+ */
 onMounted(() => {
   if (!areas.value || areas.value.length === 0) {
     navigateToTool();
@@ -88,8 +107,7 @@ onMounted(() => {
     },
   };
 
-  console.log(request);
-
+  // tembak api
   $fetch<number[]>("http://localhost:3001/topsis", request).then((data) =>
     bindData(data)
   );

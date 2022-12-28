@@ -1,10 +1,11 @@
+<!-- layout komponen item area -->
 <template>
   <div
     class="flex flex-row w-full p-4 bg-white rounded-lg shadow-lg cursor-pointer"
     @click="emit('click')"
   >
     <h1 class="my-auto text-xs font-semibold text-gray-700 lg:text-base grow">
-      {{ area.name }}
+      {{ props.area.name }}
     </h1>
     <div class="flex justify-end">
       <button
@@ -20,8 +21,14 @@
 
 <script setup lang="ts">
 import IconTrash from "~icons/carbon/trash-can";
-
+/**
+ * callback komponen ini
+ */
 const emit = defineEmits(["click", "delete"]);
+
+/**
+ * props komponen ini
+ */
 const props = defineProps<{
   area: Area;
 }>();

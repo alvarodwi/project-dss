@@ -1,9 +1,15 @@
+/**
+ * model untuk tipe data Area
+ */
 interface Area {
   name: string;
   dinding: JenisDinding;
   lantai: JenisLantai;
 }
 
+/**
+ * model untuk tipe data JenisDinding
+ */
 interface JenisDinding {
   tembok: number;
   batangKayu: number;
@@ -13,6 +19,9 @@ interface JenisDinding {
   bambu: number;
 }
 
+/**
+ * model untuk tipe data JenisLantai
+ */
 interface JenisLantai {
   kayuKualitasTinggi: number;
   keramik: number;
